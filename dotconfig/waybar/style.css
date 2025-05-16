@@ -54,9 +54,12 @@ padding: 0 13px 0 10px;
 padding: 0 13px 0 10px;
 }
 
+#workspaces{
+margin-right: 10px;
+}
 #workspaces button{
 	font-family: Tinos Nerd Font;
-	padding: 0px 3px 0px 3px;
+	/*padding: 0px 3px 0px 3px;*/
 }
 #workspaces button:hover{
 
@@ -84,7 +87,7 @@ padding: 0 13px 0 10px;
 
 #network{
 	margin-top: 2px;	
-	margin-right: 7px;
+	margin-right: 14px;
 }
 
 #clock{

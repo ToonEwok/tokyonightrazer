@@ -1,0 +1,50 @@
+#!/bin/bash
+#this is a first attempt at creating a simple install script
+#	"install" is probably a bit generous, this will be ran after an arch install to setup a basic rice(hopefully)
+#
+#
+
+echo Please enter your root/sudo password
+read -s varpw
+#echo \(debug\)Password entered: $varpw
+
+echo "$varpw" | sudo -S pacman -S --noconfirm --needed fastfetch hyprlock hyprpaper nvim rofi nodejs waybar zsh nwg-look firefox nemo pulseaudio pavucontrol ttf-cousine-nerd ttf-tinos-nerd
+
+RUNZSH=no CHSH=no KEEPZSHRC=yes sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+echo "$varpw" | sudo -S chsh -s "$(which zsh)" "$USER"
+
+mkdir -p ~/Pictures
+mkdir -p ~/.icons
+mkdir -p ~/.themes
+
+#this will attempt to determine the display being used and set it accordingly
+#in hyprland.conf and hyprpaper.conf
+monname=$(hyprctl monitors all |sed '1!d' | grep Monitor | cut -d ' ' -f 2)
+monres=$(hyprctl monitors all | sed '2!d' | cut -d ' ' -f 1)
+monres=$(echo "$monres"| awk '{print $1}')
+
+echo "DEBUG: monname ='$monname' monres='$monres'"
+
+sed -i -e "s|Virtual-1|$monname|g" dotconfig/hypr/hyprpaper.conf
+sed -i -e "s|Virtual-1|$monname|g" dotconfig/waybar/config.jsonc
+sed -i -e "s|Virtual-1|$monname|g" dotconfig/waybar/modules.jsonc
+sed -i -e "s|Virtual-1|$monname|g" dotconfig/hypr/hyprland.conf
+sed -i -e "s|1920x1080|$monres|g" dotconfig/hypr/hyprland.conf
+
+
+
+tar -xzf doticons.tar.gz
+tar -xzf dotthemes.tar.gz
+tar -xzf Pictures.tar.gz
+
+rm *.gz
+
+cp -r dotconfig/* ~/.config/
+cp -r doticons/* ~/.icons/
+cp -r dotthemes/* ~/.themes/
+cp .zshrc ~/
+cp -r Pictures/* ~/Pictures
+cp post_install ~/
+
+echo done....check ~/post_install for instructions on how to bypass default login screen, otherwise reboot

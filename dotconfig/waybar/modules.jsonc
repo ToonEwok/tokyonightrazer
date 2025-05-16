@@ -8,7 +8,7 @@
 			"empty":"<span color='#7dcfff'></span>"
 			},
 		"persistent-workspaces": {
-			"Virtual-1": [1, 2, 3, 4, 5]
+			"eDP-1": [1, 2, 3, 4, 5]
 			}
 		},
 
@@ -108,7 +108,7 @@
 	},
 	"network":
 	{	
-		"interface": "enp1s0",
+		"interface": "wlan0",
 		"format-wifi": "",
 		"format-ethernet": "󰈀",
 		"format-disconnected": "<span color='#F7DA63'>  NO CONNECTION</span>",

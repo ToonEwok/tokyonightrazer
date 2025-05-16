@@ -2,7 +2,7 @@
 {
 	"include": "~/.config/waybar/modules.jsonc",
 //bar options
-	"output":"Virtual-1",
+	"output":"eDP-1",
 	"position":"top",
 	"margin-top": 10,
 	"margin-left": 5,
