@@ -41,7 +41,7 @@ tar -xzf Pictures.tgz
 read -p "DEBUG PAUSE...GO VERIFY TAR BALLS GOT EXTRACTED....press key to continue" -n1 -s
 
 
-rm *.gz
+rm *.tgz
 
 zshtext=$(cat hyprlockzsh)
 gettytext=$(cat hyprlockgetty)
