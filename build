@@ -11,15 +11,15 @@ expect << EOF
 	set user $env(USER)
 	set password $varpw
 
-	sudo pacman -S fastfetch hyprlock hyprpaper nvim rofi nodejs waybar zsh nwg-look firefox nemo
+	spawn sudo pacman -S fastfetch hyprlock hyprpaper nvim rofi nodejs waybar zsh nwg-look firefox nemo
 	expect "\[sudo\] password for $user"
 	send "$password\r"
 
-	sudo pacman -S nerd-fonts
+	spawn sudo pacman -S nerd-fonts
 	expect "Enter a selection (default=all):"
 	send "22\r"
 
-	sudo pacman -S nerd-fonts
+	spawn sudo pacman -S nerd-fonts
 	expect "Enter a selection (default=all):"
 	send "63\r"
 
