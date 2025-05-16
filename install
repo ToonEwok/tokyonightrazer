@@ -38,8 +38,8 @@ tar -xzf doticons.tar.gz
 tar -xzf dotthemes.tar.gz
 tar -xzf Pictures.tar.gz
 
-echo "DEBUG PAUSE...GO VERIFY TAR BALLS GOT EXTRACTED"
-pause
+read -p "DEBUG PAUSE...GO VERIFY TAR BALLS GOT EXTRACTED....press key to continue" -n1 -s
+
 
 rm *.gz
 
