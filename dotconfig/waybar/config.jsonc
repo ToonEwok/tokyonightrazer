@@ -1,0 +1,86 @@
+[
+{
+	"include": "~/.config/waybar/modules.jsonc",
+//bar options
+	"output":"Virtual-1",
+	"position":"top",
+	"margin-top": 10,
+	"margin-left": 5,
+	"margin-right": 5,
+//module layout
+	"modules-left":
+	[		
+		"custom/rofisearch"
+			//"custom/pp",
+			//"custom/prev",
+			//"custom/next",
+	//	"group/mctrl",
+		//"group/media"
+	],
+	"modules-center":
+	[
+		"hyprland/workspaces"
+	],
+	"modules-right":
+	[
+		"group/misc",
+		"group/sys",
+		"group/pwr"
+	],
+	"group/media":
+	{
+		"orientation":"horizontal",
+		"drawer": {
+		"transition-duration": 500,
+		"children-class": "not-power",
+		"transition-left-to-right": false
+		},
+		
+		"modules":[
+			"custom/spotifylogo",
+			"custom/pp",
+			"custom/prev",
+			"custom/next",
+			"custom/spotify"
+		]
+	},
+
+	"group/sys":
+	{
+		"orientation":"horizontal",
+		"modules":[
+			//	"tray",
+				"custom/sep",
+				"pulseaudio",
+				"custom/sep",
+				"network",
+				"custom/sep",
+				"clock",
+				"custom/shutdown"
+			]
+	},
+
+	"group/pwr":
+	{
+		"orientation": "inherit",
+		"drawer": {
+			"transition-duration": 500,
+			"children-class": "not-power",
+			"transition-left-to-right": false
+			  },
+	"modules":["custom/power","custom/quit","custom/lock","custom/reboot"]
+	},
+
+	"group/misc":
+	{
+		"orientation":"horizontal",
+		"drawer":{
+				"transition-duration": 500,
+				"children-class": "not-power",
+				"transition-left-to-right": false
+			},
+			"modules":["custom/trayic","tray"]
+	}
+	
+}
+]

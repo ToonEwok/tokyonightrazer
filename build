@@ -1,0 +1,38 @@
+#/bin/bash
+#this is a first attempt at creating a simple install script
+#	"install" is probably a bit generous, this will be ran after an arch install to setup a basic rice(hopefully)
+#
+pacman -S fastfetch hyprlock hyprpaper nvim rofi nodejs waybar zsh nwg-look firefox nemo
+
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+
+mkdir -p ~/Pictures
+mkdir -p ~/.icons
+mkdir -p ~/.themes
+
+#this will attempt to determine the display being used and set it accordingly
+#in hyprland.conf and hyprpaper.conf
+monname=hyprctl monitors all | grep Monitor | cut -d ' ' -f 2
+monres=hyprctl monitors all | sed '2!d' | cut -d ' ' -f 1
+
+if [$monname = 'Virtual-1' ]; then
+
+	echo vm/virtual display detected, no changes required
+
+else
+
+sed -i -e 's/Virtual-1/$monname/g' dotconfig/hypr/hyprpaper.conf
+sed -i -e 's/Virtual-1/$monname/g' dotconfig/hypr/hyprland.conf
+sed -i -e 's/1920x1080/$monres/g' dotconfig/hypr/hyprland.conf
+
+fi
+
+
+cp -r dotconfig/* ~/.config/
+cp -r doticons/* ~/.icons/
+cp -r dotthemes/* ~/.themes/
+cp .zshrc ~/
+cp -r Pictures/* ~/Pictures
+
+echo done :)

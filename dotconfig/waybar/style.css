@@ -1,0 +1,129 @@
+* {
+font-size: 24px;
+}
+
+window#waybar{
+	background-color:transparent;
+		
+}
+
+#custom-pp{
+font-size: 28px;
+padding: 0 5px 0 10px;
+}
+
+#custom-prev{
+font-size: 24px;
+padding: 1px 5px 0 5px;
+}
+
+#custom-next{
+font-size: 24px;
+padding: 1px 5px 0 5px;
+}
+
+#custom-spotifylogo{
+font-size: 24px;
+padding: 0px 5px 0px 10px;
+margin-right: 10px;
+}
+
+#custom-rofisearch{
+font-size: 24px;
+padding: 0px 13px 0px 5px;
+}
+
+#custom-spotify{
+padding: 0 10px 0 10px;
+}
+
+#custom-power{
+padding: 0 13px 0 10px;
+}
+
+
+#custom-quit{
+padding: 0 13px 0 10px;
+}
+
+#custom-lock{
+padding: 0 13px 0 10px;
+}
+
+#custom-reboot{
+padding: 0 13px 0 10px;
+}
+
+#workspaces button{
+	font-family: Tinos Nerd Font;
+	padding: 0px 3px 0px 3px;
+}
+#workspaces button:hover{
+
+}
+
+
+
+#custom-sep{
+	margin-top: 2px;
+	color: #7dcfff;
+	padding: 0px 2px 0px 2px;
+}
+
+#custom-trayic{
+	margin-top: 2px;
+	padding-left: 4px;
+
+}
+
+#tray{
+	margin-top: 2px;
+	margin-left: 4px;
+	margin-right: 4px;
+}
+
+#network{
+	margin-top: 2px;	
+	margin-right: 7px;
+}
+
+#clock{
+	margin-top: 2px;
+}
+
+#pulseaudio{
+	padding-left: 4px;
+	margin-top: 2px;
+}
+
+.modules-left{
+	font-family: Cousine Nerd Font;
+	background-color: #414868;
+	opacity: 0.7;
+	color: #73daca;
+	border-radius: 8px;
+	border: 2px solid #bb9af7;
+	
+}
+
+.modules-center{
+	
+	background-color: #414868;
+	opacity: 0.7;
+	color: #FFFFFF;
+	border-radius: 8px;
+	border: 2px solid #bb9af7;
+	
+}
+
+.modules-right{
+	font-family: Cousine Nerd Font;
+	background-color: #414868;
+	opacity: 0.7;
+	color: #c0caf5;
+	border-radius: 8px;
+	border: 2px solid #bb9af7;
+	
+}
+
+
