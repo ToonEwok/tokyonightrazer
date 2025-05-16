@@ -1,4 +1,4 @@
-#/bin/bash
+#/usr/bin/expect
 #this is a first attempt at creating a simple install script
 #	"install" is probably a bit generous, this will be ran after an arch install to setup a basic rice(hopefully)
 #
@@ -7,26 +7,29 @@
 echo Please enter your root/sudo password
 read varpw
 
-set user $env(USER)
-set password $varpw
+expect << EOF
+	set user $env(USER)
+	set password $varpw
 
-sudo pacman -S fastfetch hyprlock hyprpaper nvim rofi nodejs waybar zsh nwg-look firefox nemo
-expect "\[sudo\] password for $user"
-send "$password\r"
+	sudo pacman -S fastfetch hyprlock hyprpaper nvim rofi nodejs waybar zsh nwg-look firefox nemo
+	expect "\[sudo\] password for $user"
+	send "$password\r"
 
-sudo pacman -S nerd-fonts
-expect "Enter a selection (default=all):"
-send "22\r"
+	sudo pacman -S nerd-fonts
+	expect "Enter a selection (default=all):"
+	send "22\r"
 
-sudo pacman -S nerd-fonts
-expect "Enter a selection (default=all):"
-send "63\r"
+	sudo pacman -S nerd-fonts
+	expect "Enter a selection (default=all):"
+	send "63\r"
 
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-expect "Do you want to change your default shell to zsh? \[Y/n\]"
-send "Y\r"
-expect "\[sudo\] password for $user"
-send "$password\r"
+	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+	expect "Do you want to change your default shell to zsh? \[Y/n\]"
+	send "Y\r"
+	expect "\[sudo\] password for $user"
+	send "$password\r"
+	expect eof
+EOF
 
 
 mkdir -p ~/Pictures
