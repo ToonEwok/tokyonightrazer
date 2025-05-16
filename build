@@ -18,28 +18,28 @@ expect << EOF
 
 	spawn sudo pacman -S fastfetch hyprlock hyprpaper nvim rofi nodejs waybar zsh nwg-look firefox nemo
 	expect "\\[sudo\\] password for \$user"
-	send "\$password\r"
+	send "\$password"
 
 	spawn sudo pacman -S nerd-fonts
-	expect "\\[sudo\\] password for \$user"
-	send "\$password\r"
 	expect "Enter a selection (default=all):"
-	send "22\r"
+	send "22"
 
-	spawn sudo pacman -S nerd-fonts
-	expect "\\[sudo\\] password for \$user"
-	send "\$password\r"
+	spawn sudo pacman -S nerd-fonts	
 	expect "Enter a selection (default=all):"
-	send "63\r"
+	send "63"
 
 	spawn sh -c "curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh"
 	expect "Do you want to change your default shell to zsh? \[Y/n\]"
-	send "Y\r"
-	expect "\\[sudo\\] password for \$user"
-	send "\$password\r"
+	send "Y"
 	expect eof
 EOF
 
+##	expect "\\[sudo\\] password for \$user"
+##	send "\$password\r"
+##	expect "\\[sudo\\] password for \$user"
+##	send "\$password\r"
+##	expect "\\[sudo\\] password for \$user"
+##	send "\$password\r"
 
 mkdir -p ~/Pictures
 mkdir -p ~/.icons
