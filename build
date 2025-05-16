@@ -30,6 +30,7 @@ monres=$(echo "$monres"| awk '{print $1}')
 echo "DEBUG: monname ='$monname' monres='$monres'"
 
 sed -i -e "s|Virtual-1|$monname|g" dotconfig/hypr/hyprpaper.conf
+sed -i -e "s|Virtual-1|$monname|g" dotconfig/waybar/config.jsonc
 sed -i -e "s|Virtual-1|$monname|g" dotconfig/hypr/hyprland.conf
 sed -i -e "s|1920x1080|$monres|g" dotconfig/hypr/hyprland.conf
 
