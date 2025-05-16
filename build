@@ -1,4 +1,4 @@
-#!/usr/bin/bash -x
+#!/bin/bash
 #this is a first attempt at creating a simple install script
 #	"install" is probably a bit generous, this will be ran after an arch install to setup a basic rice(hopefully)
 #
@@ -6,6 +6,7 @@
 
 echo Please enter your root/sudo password
 read -s varpw
+echo \(debug\)Password entered: $varpw
 
 expect << EOF
 	exp_internal 1
