@@ -8,6 +8,7 @@ echo Please enter your root/sudo password
 read -s varpw
 
 expect << EOF
+	exp_internal 1
 	set user "$USER"
 	set password "$varpw"
 
