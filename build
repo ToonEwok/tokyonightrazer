@@ -43,9 +43,9 @@ monres=hyprctl monitors all | sed '2!d' | cut -d ' ' -f 1
 
 
 
-sed -i -e 's/Virtual-1/$monname/g' dotconfig/hypr/hyprpaper.conf
-sed -i -e 's/Virtual-1/$monname/g' dotconfig/hypr/hyprland.conf
-sed -i -e 's/1920x1080/$monres/g' dotconfig/hypr/hyprland.conf
+sed -i -e "s/Virtual-1/$monname/g" dotconfig/hypr/hyprpaper.conf
+sed -i -e "s/Virtual-1/$monname/g" dotconfig/hypr/hyprland.conf
+sed -i -e "s/1920x1080/$monres/g" dotconfig/hypr/hyprland.conf
 
 
 
