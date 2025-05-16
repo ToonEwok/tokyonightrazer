@@ -6,40 +6,16 @@
 
 echo Please enter your root/sudo password
 read -s varpw
-echo \(debug\)Password entered: $varpw
+#echo \(debug\)Password entered: $varpw
 
-expect << EOF
-	exp_internal 1
-	set user "$USER"
-	set password "$varpw"
-	puts "User: \$user"
-	puts "PW: \$password"
+echo "$varpw" | sudo -S pacman -S --noconfirm --needed fastfetch hyprlock hyprpaper nvim rofi nodejs waybar zsh nwg-look firefox nemo
 
+echo "$varpw" | sudo pacman -S ttf-cousine-nerd --noconfirm --needed
+echo "$varpw" | sudo pacman -S ttf-tinos-nerd --noconfirm --needed
 
-	spawn sudo pacman -S fastfetch hyprlock hyprpaper nvim rofi nodejs waybar zsh nwg-look firefox nemo
-	expect "\\[sudo\\] password for \$user: "
-	send "\$password\r"
+RUNZSH=no CHSH=no KEEPZSHRC=yes sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
-	spawn sudo pacman -S nerd-fonts
-	expect "Enter a selection (default=all): "
-	send "22\r"
-
-	spawn sudo pacman -S nerd-fonts	
-	expect "Enter a selection (default=all): "
-	send "63\r"
-
-	spawn sh -c "curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh"
-	expect "Do you want to change your default shell to zsh? \[Y/n\]"
-	send "Y\r"
-	expect eof
-EOF
-
-##	expect "\\[sudo\\] password for \$user"
-##	send "\$password\r"
-##	expect "\\[sudo\\] password for \$user"
-##	send "\$password\r"
-##	expect "\\[sudo\\] password for \$user"
-##	send "\$password\r"
+echo "$varpw" | sudo -S chsh -s "$(which zsh)" "$USER"
 
 mkdir -p ~/Pictures
 mkdir -p ~/.icons
@@ -47,14 +23,15 @@ mkdir -p ~/.themes
 
 #this will attempt to determine the display being used and set it accordingly
 #in hyprland.conf and hyprpaper.conf
-monname=$(hyprctl monitors all | grep Monitor | cut -d ' ' -f 2)
+monname=$(hyprctl monitors all |sed '1!d' | grep Monitor | cut -d ' ' -f 2)
 monres=$(hyprctl monitors all | sed '2!d' | cut -d ' ' -f 1)
+monres=$(echo "$monres"| awk '{print $1}')
 
+echo "DEBUG: monname ='$monname' monres='$monres'"
 
-
-sed -i -e "s/Virtual-1/$monname/g" dotconfig/hypr/hyprpaper.conf
-sed -i -e "s/Virtual-1/$monname/g" dotconfig/hypr/hyprland.conf
-sed -i -e "s/1920x1080/$monres/g" dotconfig/hypr/hyprland.conf
+sed -i -e "s|Virtual-1|$monname|g" dotconfig/hypr/hyprpaper.conf
+sed -i -e "s|Virtual-1|$monname|g" dotconfig/hypr/hyprland.conf
+sed -i -e "s|1920x1080|$monres|g" dotconfig/hypr/hyprland.conf
 
 
 
