@@ -109,7 +109,6 @@ alias v="nvim"
 alias f="fastfetch"
 alias edit="nvim ~/.zshrc"
 alias vh="nvim ~/.config/hypr/hyprland.conf"
-alias ftp="sftp bailey@192.168.0.41"
-alias rice="~/.apps/ricesave"
+
 
 fastfetch
