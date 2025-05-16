@@ -17,7 +17,7 @@ expect << EOF
 
 
 	spawn sudo pacman -S fastfetch hyprlock hyprpaper nvim rofi nodejs waybar zsh nwg-look firefox nemo
-	expect "\\[sudo\\] password for \$user"
+	expect "\\[sudo\\] password for \$user:"
 	send "\$password"
 
 	spawn sudo pacman -S nerd-fonts
