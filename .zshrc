@@ -74,9 +74,7 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
-if [[ "$(tty)" == "/dev/tty1" ]]; then
-    exec Hyprland &>/dev/null
-fi
+
 
 # User configuration
 

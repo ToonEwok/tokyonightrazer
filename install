@@ -8,7 +8,7 @@ echo Please enter your root/sudo password
 read -s varpw
 #echo \(debug\)Password entered: $varpw
 
-echo "$varpw" | sudo -S pacman -S --noconfirm --needed fastfetch hyprlock hyprpaper nvim rofi nodejs waybar zsh nwg-look firefox nemo pulseaudio pavucontrol ttf-cousine-nerd ttf-tinos-nerd
+echo "$varpw" | sudo -S pacman -S --noconfirm --needed fastfetch hyprlock hyprpaper nvim rofi nodejs waybar zsh nwg-look firefox nemo pulseaudio pavucontrol ttf-cousine-nerd ttf-tinos-nerd kitty
 
 RUNZSH=no CHSH=no KEEPZSHRC=yes sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
@@ -31,20 +31,47 @@ sed -i -e "s|Virtual-1|$monname|g" dotconfig/waybar/config.jsonc
 sed -i -e "s|Virtual-1|$monname|g" dotconfig/waybar/modules.jsonc
 sed -i -e "s|Virtual-1|$monname|g" dotconfig/hypr/hyprland.conf
 sed -i -e "s|1920x1080|$monres|g" dotconfig/hypr/hyprland.conf
-
+sed -i -e "s|<user>|$USER|g" hyprlockgetty
 
 
 tar -xzf doticons.tar.gz
 tar -xzf dotthemes.tar.gz
 tar -xzf Pictures.tar.gz
-
 rm *.gz
+
+zshtext=$(cat hyprlockzsh)
+gettytext=$(cat hyprlockgetty)
+
 
 cp -r dotconfig/* ~/.config/
 cp -r doticons/* ~/.icons/
 cp -r dotthemes/* ~/.themes/
-cp .zshrc ~/
 cp -r Pictures/* ~/Pictures
-cp post_install ~/
 
-echo done....check ~/post_install for instructions on how to bypass default login screen, otherwise reboot
+echo "Would like to have the system boot directly to hyrplock?(y/n)"
+echo "currently you'll log into sddm, then with my zsh modifications, into hyprlock, so I'd recommend it"
+echo "unless you are on a system that is not a fresh install, in which case you might have other DEs that you use"
+read locktog
+
+if [ $locktog = "y"]; then
+
+	echo "$varpw" | sudo -S systemctl enable getty@tty1
+	echo "$varpw" | sudo -S echo "$gettytext" > /etc/systemd/system/getty@tty1.service.d/override.conf
+	echo "$zshtext" >> .zshrc
+	cp .zshrc ~/
+	echo "$varpw" | sudo -S pacman -R sddm --noconfirm
+	rm -rf ~/tokyonightrazer
+	echo "done...system rebooting in 5 seconds"
+	sleep 5
+	echo "$varpw" | sudo -S reboot
+
+else
+
+	cp .zshrc ~/
+	cp post_install ~/
+	echo done....check ~/post_install for instructions on how to bypass default login screen, the system will now reboot in 5 seconds
+	rm -rf ~/tokyonightrazer
+	sleep 5
+	echo "$varpw" | sudo -S reboot
+
+fi
