@@ -17,15 +17,15 @@ expect << EOF
 
 
 	spawn sudo pacman -S fastfetch hyprlock hyprpaper nvim rofi nodejs waybar zsh nwg-look firefox nemo
-	expect "\\[sudo\\] password for \$user:"
+	expect "\\[sudo\\] password for \$user: "
 	send "\$password\r"
 
 	spawn sudo pacman -S nerd-fonts
-	expect "Enter a selection (default=all):"
+	expect "Enter a selection (default=all): "
 	send "22\r"
 
 	spawn sudo pacman -S nerd-fonts	
-	expect "Enter a selection (default=all):"
+	expect "Enter a selection (default=all): "
 	send "63\r"
 
 	spawn sh -c "curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh"
@@ -63,5 +63,6 @@ cp -r doticons/* ~/.icons/
 cp -r dotthemes/* ~/.themes/
 cp .zshrc ~/
 cp -r Pictures/* ~/Pictures
+cp post_install ~/
 
 echo done....
