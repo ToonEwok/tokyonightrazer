@@ -38,7 +38,7 @@ tar -xzf doticons.tgz
 tar -xzf dotthemes.tgz
 tar -xzf Pictures.tgz
 
-read -p "DEBUG PAUSE...GO VERIFY TAR BALLS GOT EXTRACTED....press key to continue" -n1 -s
+#read -p "DEBUG PAUSE...GO VERIFY TAR BALLS GOT EXTRACTED....press key to continue" -n1 -s
 
 
 rm *.tgz
