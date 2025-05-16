@@ -12,8 +12,8 @@ expect << EOF
 	exp_internal 1
 	set user "$USER"
 	set password "$varpw"
-	puts "User: $user"
-	puts "PW: $password"
+	puts "User: \$user"
+	puts "PW: \$password"
 
 
 	spawn sudo pacman -S fastfetch hyprlock hyprpaper nvim rofi nodejs waybar zsh nwg-look firefox nemo
