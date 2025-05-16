@@ -1,4 +1,4 @@
-#/usr/bin/bash -x
+#!/usr/bin/bash -x
 #this is a first attempt at creating a simple install script
 #	"install" is probably a bit generous, this will be ran after an arch install to setup a basic rice(hopefully)
 #
@@ -43,8 +43,8 @@ mkdir -p ~/.themes
 
 #this will attempt to determine the display being used and set it accordingly
 #in hyprland.conf and hyprpaper.conf
-monname=hyprctl monitors all | grep Monitor | cut -d ' ' -f 2
-monres=hyprctl monitors all | sed '2!d' | cut -d ' ' -f 1
+monname=$(hyprctl monitors all | grep Monitor | cut -d ' ' -f 2)
+monres=$(hyprctl monitors all | sed '2!d' | cut -d ' ' -f 1)
 
 
 
