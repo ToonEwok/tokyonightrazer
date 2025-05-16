@@ -34,9 +34,9 @@ sed -i -e "s|1920x1080|$monres|g" dotconfig/hypr/hyprland.conf
 sed -i -e "s|<user>|$USER|g" hyprlockgetty
 
 
-tar -xzf doticons.tar.gz
-tar -xzf dotthemes.tar.gz
-tar -xzf Pictures.tar.gz
+tar -xzf doticons.tgz
+tar -xzf dotthemes.tgz
+tar -xzf Pictures.tgz
 
 read -p "DEBUG PAUSE...GO VERIFY TAR BALLS GOT EXTRACTED....press key to continue" -n1 -s
 
