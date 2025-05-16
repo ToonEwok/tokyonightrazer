@@ -16,14 +16,18 @@ expect << EOF
 	send "$password\r"
 
 	spawn sudo pacman -S nerd-fonts
+	expect "\[sudo\] password for $user"
+	send "$password\r"
 	expect "Enter a selection (default=all):"
 	send "22\r"
 
 	spawn sudo pacman -S nerd-fonts
+	expect "\[sudo\] password for $user"
+	send "$password\r"
 	expect "Enter a selection (default=all):"
 	send "63\r"
 
-	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+	spawn sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 	expect "Do you want to change your default shell to zsh? \[Y/n\]"
 	send "Y\r"
 	expect "\[sudo\] password for $user"
