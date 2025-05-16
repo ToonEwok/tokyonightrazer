@@ -37,6 +37,10 @@ sed -i -e "s|<user>|$USER|g" hyprlockgetty
 tar -xzf doticons.tar.gz
 tar -xzf dotthemes.tar.gz
 tar -xzf Pictures.tar.gz
+
+echo "DEBUG PAUSE...GO VERIFY TAR BALLS GOT EXTRACTED"
+pause
+
 rm *.gz
 
 zshtext=$(cat hyprlockzsh)
