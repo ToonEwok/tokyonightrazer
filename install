@@ -54,8 +54,10 @@ cp -r doticons/* ~/.icons/
 cp -r dotthemes/* ~/.themes/
 cp -r Pictures/* ~/Pictures
 
-nvim +'PlugInstall --sync' +qa
+cd ~/.themes
+nwg-look -a Tokyonight-Dark
 
+nvim +'PlugInstall --sync' +qa
 echo "Would like to have the system boot directly to hyrplock?(y/n)"
 read locktog
 
