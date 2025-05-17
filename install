@@ -20,10 +20,10 @@ mkdir -p ~/.themes
 
 #this will attempt to determine the display being used and set it accordingly
 #in hyprland.conf and hyprpaper.conf
-monname=$(hyprctl monitors all |sed '1!d' | grep Monitor | cut -d ' ' -f 2)
+monname=$(hyprctl monitors all | sed '1!d' | grep Monitor | cut -d ' ' -f 2)
 monres=$(hyprctl monitors all | sed '2!d' | cut -d ' ' -f 1)
 monres=$(echo "$monres"| awk '{print $1}')
-
+actconn=$(ip addr | awk '/state UP/ {print $2}' | sed '1!d' | cut -d ':' -f 1)
 echo "DEBUG: monname ='$monname' monres='$monres'"
 
 sed -i -e "s|Virtual-1|$monname|g" dotconfig/hypr/hyprpaper.conf
@@ -32,6 +32,7 @@ sed -i -e "s|Virtual-1|$monname|g" dotconfig/waybar/modules.jsonc
 sed -i -e "s|Virtual-1|$monname|g" dotconfig/hypr/hyprland.conf
 sed -i -e "s|1920x1080|$monres|g" dotconfig/hypr/hyprland.conf
 sed -i -e "s|<user>|$USER|g" hyprlockgetty
+sed -i -e "s|wlan0|$actconn|g" dotconfig/waybar/modules.jsonc
 
 
 tar -xzf doticons.tgz
@@ -46,12 +47,14 @@ rm *.tgz
 zshtext=$(cat hyprlockzsh)
 gettytext=$(cat hyprlockgetty)
 
-nvim +'PlugInstall --sync' +qa
+
 
 cp -r dotconfig/* ~/.config/
 cp -r doticons/* ~/.icons/
 cp -r dotthemes/* ~/.themes/
 cp -r Pictures/* ~/Pictures
+
+nvim +'PlugInstall --sync' +qa
 
 echo "Would like to have the system boot directly to hyrplock?(y/n)"
 read locktog
