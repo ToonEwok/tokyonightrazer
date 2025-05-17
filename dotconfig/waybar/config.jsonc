@@ -50,8 +50,8 @@
 		"orientation":"horizontal",
 		"modules":[
 			//	"tray",
-				"custom/sep",
-				"battery",
+			//	"custom/sep",
+			//	"battery",
 				"custom/sep",
 				"pulseaudio#alt",
 				"custom/sep",
