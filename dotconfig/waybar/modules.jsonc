@@ -108,7 +108,7 @@
 	},
 	"network":
 	{	
-		"interface": "wlan0",
+		"interface": "auto",
 		"format-wifi": "",
 		"format-ethernet": "󰈀",
 		"format-disconnected": "<span color='#F7DA63'>  NO CONNECTION</span>",
