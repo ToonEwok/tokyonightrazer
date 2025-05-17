@@ -78,7 +78,7 @@ if [ "$locktog" = "y" ]; then
 	echo "$zshtext" >> .zshrc
 	cp .zshrc ~/
 	echo "deleting sddm and vim"
-	echo "$varpw" | sudo -S pacman -R sddm vim--noconfirm
+	echo "$varpw" | sudo -S pacman -R sddm vim --noconfirm
 	rm -rf ~/tokyonightrazer
 	echo "done...system rebooting in 5 seconds"
 	sleep 5
