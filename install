@@ -53,14 +53,12 @@ cp -r dotthemes/* ~/.themes/
 cp -r Pictures/* ~/Pictures
 
 echo "Would like to have the system boot directly to hyrplock?(y/n)"
-echo "currently you'll log into sddm, then with my zsh modifications, into hyprlock, so I'd recommend it"
-echo "unless you are on a system that is not a fresh install, in which case you might have other DEs that you use"
 read locktog
 
 if [ "$locktog" = "y" ]; then
 
 	echo "$varpw" | sudo -S systemctl enable getty@tty1
-	echo "$varpw" | sudo -S touch /etc/systemd/system/getty@tty1.service.d/override.conf
+	echo "$varpw" | sudo -S mkdir -p /etc/systemd/system/getty@tty1.service.d && touch /etc/systemd/system/getty@tty1.service.d/override.conf
 	echo "$varpw" | sudo -S echo "$gettytext" > /etc/systemd/system/getty@tty1.service.d/override.conf
 	echo "$zshtext" >> .zshrc
 	cp .zshrc ~/
