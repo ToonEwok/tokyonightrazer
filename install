@@ -55,8 +55,8 @@ cp -r dotthemes/* ~/.themes/
 cp -r Pictures/* ~/Pictures
 
 #attempting to setup YAY
-cd ~/tokyonightrazer
-git clone https://aur.archlinux.org/yay-bin.git && cd yay-bin && makepkg -s --noconfirm && echo "$varpw" | sudo -S pacman -U *.pkg.tar.zst --noconfirm
+#cd ~/tokyonightrazer
+#git clone https://aur.archlinux.org/yay-bin.git && cd yay-bin && makepkg -s --noconfirm && echo "$varpw" | sudo -S pacman -U *.pkg.tar.zst --noconfirm
 
 
 #cd ~/.themes
@@ -77,8 +77,8 @@ if [ "$locktog" = "y" ]; then
 	echo "$varpw" | sudo -S tee /etc/systemd/system/getty@tty1.service.d/override.conf >/dev/null <<< "$gettytext"
 	echo "$zshtext" >> .zshrc
 	cp .zshrc ~/
-	echo "deleting sddm and vim"
-	echo "$varpw" | sudo -S pacman -R sddm vim --noconfirm
+	echo "deleting sddm vim and dolphin"
+	echo "$varpw" | sudo -S pacman -R sddm vim dolphin --noconfirm
 	rm -rf ~/tokyonightrazer
 	echo "done...system rebooting in 5 seconds"
 	sleep 5
