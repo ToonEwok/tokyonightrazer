@@ -46,6 +46,7 @@ rm *.tgz
 zshtext=$(cat hyprlockzsh)
 gettytext=$(cat hyprlockgetty)
 
+nvim +'PlugInstall --sync' +qa
 
 cp -r dotconfig/* ~/.config/
 cp -r doticons/* ~/.icons/
