@@ -4,11 +4,11 @@
 		"format": "{icon}",
 		"format-icons": {
 			"active":"<span color='#73daca'></span>",
-			"default":"<span color='#7dcfff'></span>",
-			"empty":"<span color='#7dcfff'></span>"
+			"default":"<span color='#414868'></span>",
+			"empty":"<span color='#414868'></span>"
 			},
 		"persistent-workspaces": {
-			"Virtual-1": [1, 2, 3, 4, 5]
+			"eDP-1": [1, 2, 3, 4, 5]
 			}
 		},
 
@@ -32,20 +32,20 @@
 	},
 	"custom/spotifylogo":
 	{
-		"format": "󰓇",
-	//	"format": "󰝚",
+	//	"format": "󰓇",
+		"format": "<span color='#c0caf5'>󰝚</span>",
 		"tooltip":false
 	},
 	"custom/pp":
 	{
-		"format": "<span color='#73daca'>󰐊</span>",
+		"format": "<span color='#f7768e'>󰐊</span>",
 		"tooltip":false,
 		"on-click": "playerctl play-pause"
 	
 	},
 	"custom/prev":
 	{
-		"format": "<span color='#73daca'>󰒮</span>",
+		"format": "<span color='#7dcfff'>󰒮</span>",
 		"tooltip":false,
 		"on-click": "playerctl previous"
 	},
@@ -58,7 +58,7 @@
 	},
 	"custom/spotify":
 	{
-		"exec":"/home/ricefarmer/.config/waybar/scripts/mediaplayer.py --player spotify",
+		"exec":"~/.config/waybar/scripts/mediaplayer.py --player spotify",
 		"format":"{}",
 		"return-type":"json",
 		"on-click":"spotify-launcher"
@@ -77,13 +77,13 @@
 	},
 	"custom/lock": 
 	{
-		"format": "<span color='#73daca'></span>",
+		"format": "<span color='#ff768e'></span>",
 		"on-click": "hyprlock",
 		"tooltip": false
 	},
 	"custom/reboot":
 	{
-		"format": "<span color='#73daca'></span>",
+		"format": "<span color='#7dcfff'></span>",
 		"tooltip": false,
 		"on-click": "reboot"
 	},
@@ -93,11 +93,20 @@
 		"format": "{icon}<span color='#73daca'> {volume}</span>",
 		"format-muted": "<span color='#F7DA63'>MUTE</span>",
 		"on-click": "pavucontrol",
-		"on-click-right":"bash -c 'pactl set-source-mute $(pactl get-default-sink) toggle'",
+		"on-click-right":"pactl set-sink-mute @DEFAULT_SINK@ toggle",
 		"format-icons": 
 		{	
 			"default": ["",""," "] 
 		}
+	},
+
+	"pulseaudio#alt":
+	{
+		"format": "VOL<span color='#73daca'> {volume}</span>",
+		"format-muted": "<span color='#F7DA63'>MUTE</span>",
+		"on-click": "pavucontrol",
+		"on-click-right":"pactl set-sink-mute @DEFAULT_SINK@ toggle"
+
 	},
 
 	"custom/sep":
@@ -113,6 +122,12 @@
 		"format-ethernet": "󰈀",
 		"format-disconnected": "<span color='#F7DA63'>  NO CONNECTION</span>",
 		"tooltip-format": "{ipaddr}" 
+	},
+	"battery": 
+	{
+		"bat": "BAT0",
+		"interval": 60,
+		"format": "BAT {capacity}%"
 	},
 	
 	"clock":

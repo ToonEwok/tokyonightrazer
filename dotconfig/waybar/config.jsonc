@@ -2,20 +2,20 @@
 {
 	"include": "~/.config/waybar/modules.jsonc",
 //bar options
-	"output":"Virtual-1",
+	"output":"eDP-1",
 	"position":"top",
-	"margin-top": 10,
-	"margin-left": 5,
-	"margin-right": 5,
+	//"margin-top": 10,
+//	"margin-left": 5,
+//	"margin-right": 5,
 //module layout
 	"modules-left":
 	[		
-		"custom/rofisearch"
+		"custom/rofisearch",
 			//"custom/pp",
 			//"custom/prev",
 			//"custom/next",
 	//	"group/mctrl",
-		//"group/media"
+		"group/media"
 	],
 	"modules-center":
 	[
@@ -51,7 +51,9 @@
 		"modules":[
 			//	"tray",
 				"custom/sep",
-				"pulseaudio",
+				"battery",
+				"custom/sep",
+				"pulseaudio#alt",
 				"custom/sep",
 				"network",
 				"custom/sep",
@@ -68,7 +70,7 @@
 			"children-class": "not-power",
 			"transition-left-to-right": false
 			  },
-	"modules":["custom/power","custom/quit","custom/lock","custom/reboot"]
+	"modules":["custom/power","custom/lock","custom/reboot"]
 	},
 
 	"group/misc":

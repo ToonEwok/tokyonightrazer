@@ -8,7 +8,7 @@ echo Please enter your root/sudo password
 read -s varpw
 #echo \(debug\)Password entered: $varpw
 
-echo "$varpw" | sudo -S pacman -S --noconfirm --needed fastfetch hyprlock hyprpaper nvim rofi nodejs waybar zsh nwg-look firefox nemo pulseaudio pavucontrol ttf-cousine-nerd ttf-tinos-nerd kitty
+echo "$varpw" | sudo -S pacman -S --noconfirm --needed fastfetch hyprlock hyprpaper nvim rofi nodejs waybar zsh nwg-look firefox nemo pulseaudio pavucontrol ttf-cousine-nerd ttf-tinos-nerd kitty spotify-launcher python-gobject
 
 RUNZSH=no CHSH=no KEEPZSHRC=yes sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
@@ -54,10 +54,18 @@ cp -r doticons/* ~/.icons/
 cp -r dotthemes/* ~/.themes/
 cp -r Pictures/* ~/Pictures
 
+#attempting to setup YAY
+cd ~/tokyonightrazer
+git clone https://aur.archlinux.org/yay-bin.git && cd yay-bin && makepkg -s --noconfirm && echo "$varpw" | sudo -S pacman -U *.pkg.tar.zst --noconfirm
+
+
 #cd ~/.themes
 #nwg-look -a Tokyonight-Dark
 
+#installs neovim plugins
 nvim +'PlugInstall --sync' +qa
+
+
 echo "Would like to have the system boot directly to hyrplock?(y/n)"
 read locktog
 
@@ -69,7 +77,8 @@ if [ "$locktog" = "y" ]; then
 	echo "$varpw" | sudo -S tee /etc/systemd/system/getty@tty1.service.d/override.conf >/dev/null <<< "$gettytext"
 	echo "$zshtext" >> .zshrc
 	cp .zshrc ~/
-	echo "$varpw" | sudo -S pacman -R sddm --noconfirm
+	echo "deleting sddm and vim"
+	echo "$varpw" | sudo -S pacman -R sddm vim--noconfirm
 	rm -rf ~/tokyonightrazer
 	echo "done...system rebooting in 5 seconds"
 	sleep 5
