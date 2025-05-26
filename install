@@ -2,7 +2,7 @@
 #this is a first attempt at creating a simple install script
 #	"install" is probably a bit generous, this will be ran after an arch install to setup a basic rice(hopefully)
 #
-#
+#test
 
 echo Please enter your root/sudo password
 read -s varpw
